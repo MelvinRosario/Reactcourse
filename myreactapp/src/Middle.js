@@ -1,22 +1,38 @@
 import React from 'react'
+import { useState } from 'react'
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const Middle = () => {
-    function textChange(){
-    let tname = ['Eat','Sleep','Repeat'];
-    let rand  = Math.floor(Math.random()*3);
-    return tname[rand]; 
-    }
-    let changeText = (name) =>{
-    console.log(`Bala Click the button so changed ${name}`)
-    }
+        const [items, setItems] = useState(
+          [
+            {
+              id:1,
+              checked : true,
+              item: "practice coding Morning"
+            },
+            {
+              id:2,
+              checked: false,
+              item: "Practice coding Afternoon"
+            },
+            {
+              id:3,
+              checked: true,
+              item: "Practice coding Night"
+            }
+          ]
+        )
   return (
     <main>
-      <div className='card'>
-      <h4 className='ch4'>Let's go <span  className='ccolor'>{textChange()}</span> </h4>
-      <p id='text'>Click the button to change text</p>
-      <button onClick={() => changeText('bala')}>Click</button>
-      </div>
-      
+          <ul>
+            {items.map((item) => (
+              <li className='item' key={item.id}>
+                <input type="checkbox" checked = {item.checked} />
+                <label htmlFor="">{item.item}</label>
+                <FaRegTrashCan role='button' tabIndex='0' />
+              </li>
+            ))}
+          </ul>
     </main>
   )
 }
