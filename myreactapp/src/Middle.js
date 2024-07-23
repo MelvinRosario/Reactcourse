@@ -8,26 +8,33 @@ const Middle = () => {
             {
               id:1,
               checked : true,
-              item: "practice coding Morning"
+              item: "practice coding"
             },
             {
               id:2,
               checked: false,
-              item: "Practice coding Afternoon"
+              item: "Playing Red dead redemption"
             },
             {
               id:3,
               checked: true,
-              item: "Practice coding Night"
+              item: "Read About Future and options"
             }
           ]
         )
+        const handleCheck = (id) =>{
+          console.log(`id: ${id}`);
+        }
+       
   return (
     <main>
           <ul>
             {items.map((item) => (
               <li className='item' key={item.id}>
-                <input type="checkbox" checked = {item.checked} />
+                <input 
+                onChange={() => handleCheck(item.id)}
+                type="checkbox" 
+                checked = {item.checked} />
                 <label htmlFor="">{item.item}</label>
                 <FaRegTrashCan role='button' tabIndex='0' />
               </li>
