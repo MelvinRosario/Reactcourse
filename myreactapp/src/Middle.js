@@ -27,6 +27,10 @@ const Middle = () => {
           item.id === id ? { ...item, checked:!item.checked} : item)
            setItems(listItems)
         }
+        const deleteRow = (id) =>{
+          const listItems = items.filter((item) => item.id !==id)
+          setItems(listItems); 
+        }
        
   return (
     <main>
@@ -38,7 +42,7 @@ const Middle = () => {
                 type="checkbox" 
                 checked = {item.checked} />
                 <label htmlFor="">{item.item}</label>
-                <FaRegTrashCan role='button' tabIndex='0' />
+                <FaRegTrashCan onClick={() => deleteRow(item.id)} role='button' tabIndex='0' />
               </li>
             ))}
           </ul>
